@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+<style>
+  .title {
+    font-family: Lobster, Monospace;
+    color: white;
+  }
+  .searchBar {
+    border: 1px solid rgb(161, 221, 222);
+    border-radius: 15px;
+    height: 50px;
+    font-size: 21px;
+    font-weight: 400;
+    width: 50%;
+    padding-right: 10%;
+    float: right;
+    margin-top: 30px;
+  }
+  .submitBut {
+    height: 50px;
+    margin-top: 30px;
+    float: left;
+    width: 10%
+  }
+  .testTop {
+    background-color: rgb(161, 221, 222);
+  }
+  .testButtons {
+    color: white;
+  }
+  .Releases {
+    color: black;
+  }
+</style>
+
+<div class="container-fluid">
+  <!-- Top Bar -->
+  <div class="row testTop">
+    <div class="col-md-8">
+      <h2 class="text-primary title">Bartr.io</h2>
+    </div>
+    <div class="col-md-1">
+      <a href="#"><h2 class="testButtons">Browse</h2></a>
+    </div>
+    <div class="col-md-1">
+      <a href="#"><h2 class="testButtons">About</h2></a>
+    </div>
+    <div class="col-md-1">
+      <a href="#"><h2 class="testButtons">Barter</h2></a>
+    </div>
+    <div class="col-md-1">
+      <a href="#"><h2 class="testButtons">Login</h2></a>
+    </div>
+  </div>
+  <!-- Search Bar -->
+  <form action="\searchForShoes">
+    <div class="row">
+      <div class="col-md-6">
+        <input type="text" placeholder="Yeezy 350 v2 Beluga" class="searchBar" required>
+      </div>
+      <div class="col-md-6">
+        <button type="submit" class="submitBut">Submit</button>
+      </div>
+    </div>
+  </form>
+  <!-- Popular Shoes -->
+  <div>
+    <h2 class="col-md-12">Popular Shoes</h2>
+  </div>
+  <div class="col-md-2">
+    <img src="https://www.flightclub.com/media/catalog/product/8/0/800389_1.jpg" class="img-responsive">
+  </div>
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-2">
+    <img src="https://www.flightclub.com/media/catalog/product/8/0/800389_1.jpg" class="img-responsive">
+  </div>
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-2">
+    <img src="https://www.flightclub.com/media/catalog/product/8/0/800389_1.jpg" class="img-responsive">
+  </div>
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-2">
+    <img src="https://www.flightclub.com/media/catalog/product/8/0/800389_1.jpg" class="img-responsive">
+  </div>
+  <!-- New Releases -->
+  <div class="col-md-12">
+    <h2>New Releases</h2>
+  </div>
+  <div class="col-md-2">
+    <img src="https://www.flightclub.com/media/catalog/product/8/0/800389_1.jpg" class="img-responsive">
+  </div>
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-2">
+    <img src="https://www.flightclub.com/media/catalog/product/8/0/800389_1.jpg" class="img-responsive">
+  </div>
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-2">
+    <img src="https://www.flightclub.com/media/catalog/product/8/0/800389_1.jpg" class="img-responsive">
+  </div>
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-2">
+    <img src="https://www.flightclub.com/media/catalog/product/8/0/800389_1.jpg" class="img-responsive">
+  </div>
+  <!-- Great Barters -->
+  <div class="col-md-12">
+    <h2>Great Barters</h2>
+  </div>
+  <div class="col-md-2">
+    <img src="https://www.flightclub.com/media/catalog/product/8/0/800389_1.jpg" class="img-responsive">
+  </div>
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-2">
+    <img src="https://www.flightclub.com/media/catalog/product/8/0/800389_1.jpg" class="img-responsive">
+  </div>
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-2">
+    <img src="https://www.flightclub.com/media/catalog/product/8/0/800389_1.jpg" class="img-responsive">
+  </div>
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-2">
+    <img src="https://www.flightclub.com/media/catalog/product/8/0/800389_1.jpg" class="img-responsive">
+  </div>
+  <!-- Not Yet Edited
+  <div class="row">
+    <div class="col-xs-4">
+      <button class="btn btn-block btn-primary"><i class="fa fa-thumbs-up"></i> Like</button>
+    </div>
+    <div class="col-xs-4">
+      <button class="btn btn-block btn-info"><i class="fa fa-info-circle"></i> Info</button>
+    </div>
+    <div class="col-xs-4">
+      <button class="btn btn-block btn-danger"><i class="fa fa-trash"></i> Delete</button>
+    </div>
+  </div>
+  <p>Things cats <span class="text-danger">love:</span></p>
+  <ul>
+    <li>cat nip</li>
+    <li>laser pointers</li>
+    <li>lasagna</li>
+  </ul>
+  <p>Top 3 things cats hate:</p>
+  <ol>
+    <li>flea treatment</li>
+    <li>thunder</li>
+    <li>other cats</li>
+  </ol>
+  <form action="/submit-cat-photo">
+    <div class="row">
+      <div class="col-xs-6">
+        <label><input type="radio" name="indoor-outdoor"> Indoor</label>
+      </div>
+      <div class="col-xs-6">
+        <label><input type="radio" name="indoor-outdoor"> Outdoor</label>
+      </div>
+      <div class="col-xs-4">
+        <label><input type="checkbox" name="personality"> Loving</label>
+    </div>
+      <div class="col-xs-4">
+        <label><input type="checkbox" name="personality"> Lazy</label>
+    </div>
+      <div class="col-xs-4">
+        <label><input type="checkbox" name="personality"> Crazy</label>
+    </div>
+      </div>
+    <input type="text" placeholder="cat photo URL" required>
+    <button type="submit">Submit</button>
+  </form>
+   -->
+</div>
