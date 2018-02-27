@@ -37,6 +37,11 @@
   .Releases {
     color: black;
   }
+  .modalStyle {
+    background-color: rgb(161, 221, 222);
+    font-size: 2em;
+    border: none;
+  }
 </style>
 </head>
 <body>
@@ -55,15 +60,15 @@
     <div class="col-md-1">
       <a href="#"><h2 class="testButtons">Barter</h2></a>
     </div>
-    <div class="col-md-1">
-      
+    <div class="col-md-1 text-center">
+
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+  <button type="button" class="btn btn-info btn-lg modalStyle" data-toggle="modal" data-target="#myModal">Login</button>
 
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-    
+
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -76,14 +81,14 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
-      
+
     </div>
   </div>
-  
+
 </div>
-      
-      
-      
+
+
+
     </div>
   </div>
   <!-- Search Bar -->
@@ -163,51 +168,5 @@
   <div class="col-md-2">
     <img src="https://www.flightclub.com/media/catalog/product/8/0/800389_1.jpg" class="img-responsive">
   </div>
-  <!-- Not Yet Edited
-  <div class="row">
-    <div class="col-xs-4">
-      <button class="btn btn-block btn-primary"><i class="fa fa-thumbs-up"></i> Like</button>
-    </div>
-    <div class="col-xs-4">
-      <button class="btn btn-block btn-info"><i class="fa fa-info-circle"></i> Info</button>
-    </div>
-    <div class="col-xs-4">
-      <button class="btn btn-block btn-danger"><i class="fa fa-trash"></i> Delete</button>
-    </div>
-  </div>
-  <p>Things cats <span class="text-danger">love:</span></p>
-  <ul>
-    <li>cat nip</li>
-    <li>laser pointers</li>
-    <li>lasagna</li>
-  </ul>
-  <p>Top 3 things cats hate:</p>
-  <ol>
-    <li>flea treatment</li>
-    <li>thunder</li>
-    <li>other cats</li>
-  </ol>
-  <form action="/submit-cat-photo">
-    <div class="row">
-      <div class="col-xs-6">
-        <label><input type="radio" name="indoor-outdoor"> Indoor</label>
-      </div>
-      <div class="col-xs-6">
-        <label><input type="radio" name="indoor-outdoor"> Outdoor</label>
-      </div>
-      <div class="col-xs-4">
-        <label><input type="checkbox" name="personality"> Loving</label>
-    </div>
-      <div class="col-xs-4">
-        <label><input type="checkbox" name="personality"> Lazy</label>
-    </div>
-      <div class="col-xs-4">
-        <label><input type="checkbox" name="personality"> Crazy</label>
-    </div>
-      </div>
-    <input type="text" placeholder="cat photo URL" required>
-    <button type="submit">Submit</button>
-  </form>
-   -->
 </div>
 </body>
