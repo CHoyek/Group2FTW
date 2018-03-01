@@ -1,0 +1,14 @@
+<!check to see if there are any successful messages>
+{{#if success_msg}}
+  <div class="alert alert-success alert-dismissable" role="alert">
+    <!add a close button>
+    <button class="close" type="button" data-dismiss="alert">&times;</button>
+    {{success_msg}}</div>
+{{/if}}
+
+{{#if error_msg}}
+  <div class="alert alert-danger alert-dismissable" role="alert"> 
+    <button class="close" type="button"
+    data-dismiss = "alert">&times;</button>
+    {{error_msg}}</div>
+{{/if}}

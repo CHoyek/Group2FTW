@@ -1,0 +1,16 @@
+<!return shoes: it should be an array>
+{{#each shoes}}
+  <div class="card card-body mb-2">
+    <h4>Brand Name: {{brandname}}</h4>
+    <h5>Shoes Name: {{shoesname}}</h5>
+    <a class="btn btn-dark btn-block mb-2" href="/shoes/edit/{{id}}">Edit</a>
+    <form method ="post" action="/shoes/{{id}}?_method=DELETE">
+      <input type="hidden" name="_method" value="DELETE">
+      <!create a submit button>
+      <input type="submit" class="btn btn-danger btn-block" value ="Delete">
+    
+    </form>
+  </div>
+{{else}}
+    <p>No shoes listed</p>
+{{/each}}

@@ -1,0 +1,20 @@
+<! row is for the grid system>
+<div class="row">
+  <! 6 column div, pushed to the middle>
+  <div class="col-md-6 mx-auto">
+    <div class="card card-body">
+      <h3 class="text-center">Account Login</h3>
+      <form method="post" action="/users/login">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="username" name="username" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" class = "btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
