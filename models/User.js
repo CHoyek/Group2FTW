@@ -22,5 +22,5 @@ const UserSchema = new Schema ({
     default: Date.now
   }
 });
-//We are going to create our model and we are going to call it ideas and it is going to be connected to the idea shcema
+//We are going to create our model and we are going to call it users and it is going to be connected to the user shcema
 mongoose.model('users', UserSchema);
