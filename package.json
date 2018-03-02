@@ -1,7 +1,7 @@
 {
-  "name": "vidjot",
+  "name": "Bartr.io",
   "version": "1.0.0",
-  "description": "App to create login/signup functionalities",
+  "description": "App to barter shoes",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",

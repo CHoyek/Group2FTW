@@ -1,7 +1,7 @@
 //app.js: entry point file
 //whenever I install a module like I just did and I want to bring in then I just need to use the required function here.
 const express = require ('express');
-//bring the handlebars module in 
+//bring the handlebars module in
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 //Once we bring in Express, and we require it, we need to bring a variable
 //We are going to call this app and we are going to set it to the Express function and that's going to basically initialize our application
 const bodyParser = require('body-parser');
-const app = express(); 
+const app = express();
 
 //Load routes
 const shoes = require('./routes/shoes');
@@ -21,22 +21,22 @@ const users = require('./routes/users');
 require('./config/passport')(passport);
 
 //Map global promise - get rid of warning
-//In this way, we are using global promises instead of the mongooses live default library which is deprecated 
+//In this way, we are using global promises instead of the mongooses live default library which is deprecated
 mongoose.Promise = global.Promise;
 
 //Connect to mongoose and pass in database.
-//Start off with local database; barter: name of my database 
-mongoose.connect('mongodb://localhost/barter')
+//Start off with local database; barterDB: name of my database
+mongoose.connect('mongodb://localhost/barterDB')
 //when we use a promise, we need to catch it with .then
-//Once we connect, we will get this promise back and we are just going to want that we are connected 
+//Once we connect, we will get this promise back and we are just going to want that we are connected
   .then(()=> console.log ('MongoDB Connected ...'))
   //If there is an error what we can do is to remove that semi-colon and say don't catch and then we'll pass in error and we'll set that to console.log the error
   //If they can't connect if something happens, this will fire off and it will log the error
   .catch(err => console.log(err));
 
-  
+
 //Handlebars Middleware
-//main is the default layout; layout is a view that wraps around all of other views 
+//main is the default layout; layout is a view that wraps around all of other views
 app.engine('handlebars', exphbs({
   defaultLayout: 'main'
 }));
@@ -104,6 +104,13 @@ app.get('/', (req,res)=> {
   }); //send text 'index' to the browser
 });
 
+//Browse doesn't need a route as of right now; it goes to the home page
+
+//Barter Route
+app.get('/Barter', (req,res)=>{
+  res.render('barter');
+});
+
 //About Route
 app.get('/About', (req,res)=>{
   res.render('about');
@@ -127,4 +134,4 @@ const port = 5000; //put a port in a variable
 app.listen(port, () =>{
   console.log(`Server started on port ${port}`);//ES 6 way to do this
   //The above code is equavilant as console.log('Server started on port' + port);
-}); 
+});
