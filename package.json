@@ -4,6 +4,8 @@
   "description": "App to create login/signup functionalities",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "set NODE_ENV=dev && nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -19,5 +21,8 @@
     "mongoose": "^5.0.7",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+  "nodemon": "^1.12.1"
   }
 }
