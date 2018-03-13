@@ -2,6 +2,7 @@
 # Group2FTW == Meme Dream Team
 
 runs on http://localhost:5000/
+Assumes that node and npm are installed
 
 Setting up dev env:
 1. Clone repo
