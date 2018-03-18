@@ -1,0 +1,18 @@
+<!the error for using passport>
+{{#if error}}
+  <div class="alert alert-danger alert-dismissable" role="alert">
+    <button class="close" type="button" data-dismiss="alert">&times;</button>
+    {{error}}</div>
+{{/if}}
+
+<!loop through the errors>
+{{#each errors}}
+  <div class="alert alert-danger alert-dismissable" role="alert">
+    <button class="close" type="button"
+    data-dismiss="alert">&times;</button>
+    {{text}}</div>
+  <!no errors, nothing happened>
+{{else}}
+
+{{/each}}
+
