@@ -6,7 +6,7 @@ const router = express.Router();
   //dot means that we are looking in the current directory that we're in. We are in app js, so we are looking in the current directory into models and then we want to look at Shoe (just the name of file, don't need to put js)
   // ../ outside the folder
   require('../models/Shoe');
-  //Load the model into a variable 
+  //Load the model into a variable
   const Shoe = mongoose.model('shoes'); //pass the name of the model, which is shoes
 
 //Shoes Index Page
@@ -20,7 +20,7 @@ router.get('/', (req,res) => {
       shoes:shoes
     });
   });
-  
+
 });
 //Upload Shoes Form
 router.get('/sell', (req,res)=>{
@@ -62,7 +62,7 @@ router.post('/', (req,res) => {
     //push on to it with an object with the text of please add a shoes name
     errors.push({text:'Please add a shoes name.'})
   }
-   
+
 
 if(errors.length > 0){
   //rerender the form
