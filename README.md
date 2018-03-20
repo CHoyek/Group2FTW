@@ -12,8 +12,8 @@ Setting up dev env:
     npm install
 5. In the second window:
     mongod -dbpath "/PathWhereYouWantMongodbToPutStuff"
-6. In the first window:
-    npm init
+6. In the first window: <br>
+    npm init <br>
     npm run dev <br>
     ("npm start" also works, but "npm run dev" uses nodemon to automatically restart the server when changes are detected, so it's better for development)
 7. Go to http://localhost:5000/
