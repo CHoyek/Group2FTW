@@ -1,5 +1,4 @@
-# Group2FTW
-# Group2FTW == Meme Dream Team
+# 2018 Spring SWE Group 2
 
 
 
