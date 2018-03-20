@@ -3,7 +3,7 @@ const assert = require('assert')
 
 describe('Public Pages', function() {
   // Recommended: 5s locally, 10s to remote server, 30s from airplane ¯\_(ツ)_/¯
-  this.timeout('12s')
+  this.timeout('15s')
 
   let nightmare = null
   beforeEach(() => {
@@ -15,6 +15,7 @@ describe('Public Pages', function() {
     it('should load without error', done => {
       // your actual testing urls will likely be `http://localhost:port/path`
       nightmare.goto('http://localhost:5000/')
+        .wait(1000)
         .end()
         .then(function (result) { done() })
         .catch(done)
@@ -25,6 +26,7 @@ describe('Public Pages', function() {
     it('should load without error', done => {
       // your actual testing urls will likely be `http://localhost:port/path`
       nightmare.goto('http://localhost:5000/Barter')
+        .wait(1000)
         .end()
         .then(function (result) { done() })
         .catch(done)
@@ -35,6 +37,7 @@ describe('Public Pages', function() {
     it('should load without error', done => {
       // your actual testing urls will likely be `http://localhost:port/path`
       nightmare.goto('http://localhost:5000/About')
+        .wait(1000)
         .end()
         .then(function (result) { done() })
         .catch(done)
