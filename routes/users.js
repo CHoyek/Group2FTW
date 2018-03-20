@@ -17,14 +17,14 @@ router.get('/register',(req,res) => {
 router.get('/logout', (req, res) => {
     req.logout();
     req.flash('success_msg', "You've been logged out.");
-    res.redirect('login');
+    res.redirect('/');
 });
 
 //Login Form Post
 router.post('/login', (req,res,next) =>{
   passport.authenticate('local',{
     successRedirect: '/shoes',
-    failureRedirect: '/users/login',
+    failureRedirect: '/',
     failureFlash: true
   })(req,res,next);
 
