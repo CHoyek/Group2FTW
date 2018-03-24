@@ -9,7 +9,7 @@ require('../models/User');
 const User = mongoose.model('users');
 
 //User Register Route
-router.get('/register',(req,res) => {
+router.get('/register', (req,res) => {
   res.render('users/register');
 });
 
