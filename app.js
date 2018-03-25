@@ -104,7 +104,10 @@ app.get('/', (req,res)=> {
   }); //send text 'index' to the browser
 });
 
-//Browse doesn't need a route as of right now; it goes to the home page
+//Barter Route
+app.get('/Browse', (req,res)=>{
+  res.render('browse');
+});
 
 //Barter Route
 app.get('/Barter', (req,res)=>{
