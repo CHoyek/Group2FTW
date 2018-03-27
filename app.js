@@ -98,7 +98,7 @@ app.get('/', (req,res)=> {
  //pass dynamic data in our view
  //pass that into our view
 
-  const title ='Welcome everyone';
+  const title ='Welcome to Bartr';
   res.render('index',{
     title: title
   }); //send text 'index' to the browser
