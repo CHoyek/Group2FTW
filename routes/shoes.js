@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
+const {ensureAuthenticated} = require('../helpers/auth');
+
 
 //Load Shoe Model
   //dot means that we are looking in the current directory that we're in. We are in app js, so we are looking in the current directory into models and then we want to look at Shoe (just the name of file, don't need to put js)
@@ -10,8 +12,8 @@ const router = express.Router();
   const Shoe = mongoose.model('shoes'); //pass the name of the model, which is shoes
 
 //Shoes Index Page
-router.get('/', (req,res) => {
-  Shoe.find({})
+router.get('/', ensureAuthenticated, (req,res) => {
+  Shoe.find({user:req.user.id})
   .sort({data:'desc'})
   //return a promise
   //We can access the reuslts into the shoes variable
@@ -23,12 +25,12 @@ router.get('/', (req,res) => {
 
 });
 //Upload Shoes Form
-router.get('/sell', (req,res)=>{
+router.get('/sell', ensureAuthenticated, (req,res)=>{
   res.render('shoes/sell');
 });
 
 //Edit Shoes Form
-router.get('/edit/:id', (req,res)=>{
+router.get('/edit/:id', ensureAuthenticated, (req,res)=>{
   //Find one item, not an array
   //pass an obejct with a query
   Shoe.findOne({
@@ -36,14 +38,20 @@ router.get('/edit/:id', (req,res)=>{
     _id: req.params.id
   })
   .then(shoe =>{
-    res.render('shoes/edit',{
-      shoe:shoe
-    });
+    if(shoe.user != req.user.id){
+      req.flash('error_msg', 'Not Authorized');
+      res.redirect('/shoes');
+    }else {
+      res.render('shoes/edit',{
+        shoe:shoe
+      });
+    }
+
   });
 });
 
 //Process Form
-router.post('/', (req,res) => {
+router.post('/', ensureAuthenticated, (req,res) => {
   //In the request object, we can access the body so req.body
   //console.log(req.body);
   //res.send('ok');
@@ -62,13 +70,13 @@ router.post('/', (req,res) => {
     //push on to it with an object with the text of please add a shoes name
     errors.push({text:'Please add a shoes name.'})
   }
-    
+
   //no shoes price
   if(!req.body.price){
     //push on to it with an object with the text of please add a shoes price
     errors.push({text:'Please add a shoes price.'})
   }
-    
+
     //no shoes name
   if(!req.body.description){
     //push on to it with an object with the text of please add a shoes description
@@ -91,6 +99,7 @@ if(errors.length > 0){
     shoesname: req.body.shoesname,
     price: req.body.price,
     description: req.body.description,
+    user: req.user.id
   }
   //Idea comes from line 30: const Idea = mongoose.model('ideas');
   new Shoe(newUser)
@@ -106,7 +115,7 @@ if(errors.length > 0){
 });
 
 //Edit Form process
-router.put('/:id', (req,res)=>{
+router.put('/:id', ensureAuthenticated, (req,res)=>{
   Shoe.findOne({
     _id:req.params.id
   })
@@ -127,7 +136,7 @@ router.put('/:id', (req,res)=>{
 });
 
 //Delete Shoe
-router.delete('/:id', (req,res)=> {
+router.delete('/:id', ensureAuthenticated, (req,res)=> {
   Shoe.remove({_id: req.params.id})
   .then(() => {
     req.flash('success_msg', 'Shoes information removed');

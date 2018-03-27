@@ -13,17 +13,18 @@ const ShoeSchema = new Schema ({
     type: String,
     required: true
   },
-    
   price:{
     type: String,
     required: true
   },
-    
- description:{
+  description:{
     type: String,
     required: true
   },
-    
+  user:{
+    type: String,
+    required: true
+  },
   date:{
     type:Date,
     default: Date.now
