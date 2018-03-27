@@ -1,4 +1,5 @@
 //app.js: entry point file
+const path = require('path');
 //whenever I install a module like I just did and I want to bring in then I just need to use the required function here.
 const express = require ('express');
 //bring the handlebars module in
@@ -56,6 +57,9 @@ app/use(function(req,res,next){
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+//Static folder path join for image use
+app.use(express.static(path.join(__dirname, 'public')));
+
 //middleware for method override
 app.use(methodOverride('_method'));
 
@@ -98,7 +102,7 @@ app.get('/', (req,res)=> {
  //pass dynamic data in our view
  //pass that into our view
 
-  const title ='Welcome everyone';
+  const title ='Welcome to Bartr';
   res.render('index',{
     title: title
   }); //send text 'index' to the browser
