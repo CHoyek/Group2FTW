@@ -1,4 +1,5 @@
 //app.js: entry point file
+const path = require('path');
 //whenever I install a module like I just did and I want to bring in then I just need to use the required function here.
 const express = require ('express');
 //bring the handlebars module in
@@ -55,6 +56,9 @@ app/use(function(req,res,next){
 //Body parser middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+
+//Static folder path join for image use
+app.use(express.static(path.join(__dirname, 'public')));
 
 //middleware for method override
 app.use(methodOverride('_method'));
