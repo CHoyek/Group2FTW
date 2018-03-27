@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const router = express.Router();
+const {ensureAuthenticated} = require('../helpers/auth');
 
 //Load User Model
 require('../models/User');
@@ -11,6 +12,17 @@ const User = mongoose.model('users');
 //User Register Route
 router.get('/register', (req,res) => {
   res.render('users/register');
+});
+
+
+//User account settings Route 2.0
+router.get('/settings', ensureAuthenticated, (req, res) => {
+  User.find({username:req.user.username})
+    .then(users => {
+      res.render('users/settings', {
+        users:users
+      });
+    });
 });
 
 //Logout Router
