@@ -1,4 +1,11 @@
  <!only want collapsable button on small screens: sm; primary: blue; mb3: it adds margin to the bottom>
+ <style>
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+ </style>
  <nav class="navbar navbar-expand-sm navbar-dark bg-info mb-3">
   <div class = "container">
   <a class="navbar-brand" href="/">Bartr.io</a>
@@ -38,6 +45,7 @@
                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
+                  <img class="center" src="/img/KanyeHead.jpg" alt="Kanye's Head" width="100" height="100">
                   {{> _login}}
                 </div>
               </div>
