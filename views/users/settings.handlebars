@@ -1,20 +1,9 @@
 <! Account Preferences page>
-<div class="container-fluid">
-  <div class="row">
-    <h1>Account Settings</h1>
-  </div><br><br>
-  <div class="row">
-    <div class="col-md-2"><h4>Username: </h4></div>
-    <div class="col-md-10"><h4>FillerName</h4></div>
+{{#each users}}
+  <div class="card card-body">
+    <h4>Username: {{username}}</h4>
+    <h5>Email: {{email}}</h5>
   </div>
-  <div class="row">
-    <div class="col-md-2"><h4>Email: </h4></div>
-    <div class="col-md-10"><h4>FillerEmail</h4></div>
-  </div><br>
-  <div class="row">
-    <div class="col-md-3"><h4><a href="#">Change Email</a></h4></div>
-  </div>
-  <div class="row">
-    <div class="col-md-3"><h4><a href="#">Change Password</a></h4></div>
-  </div>
-</div>
+{{else}}
+  <p>poo</p>
+{{/each}}
