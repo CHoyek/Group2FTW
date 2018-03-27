@@ -13,6 +13,11 @@ router.get('/register', (req,res) => {
   res.render('users/register');
 });
 
+//User account settings Route
+router.get('/settings', (req,res) => {
+  res.render('users/settings');
+});
+
 //Logout Router
 router.get('/logout', (req, res) => {
     req.logout();

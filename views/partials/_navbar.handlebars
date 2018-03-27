@@ -19,17 +19,17 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       {{#if user}}
-      <li class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink">Check your shoes</a>
-        <div class="dropdown-menu">
-          <a href="/shoes" class="dropdown-item ">My shoes</a>
-           <a href="/shoes/sell" class="dropdown-item ">Sell Shoes</a>
-		   <a href="#" class="dropdown-item">Account</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a href="/users/logout" class="nav-link">Logout</a>
-      </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink">My Account</a>
+          <div class="dropdown-menu">
+            <a href="/shoes" class="dropdown-item ">My shoes</a>
+            <a href="/shoes/sell" class="dropdown-item ">Sell Shoes</a>
+  		      <a href="/users/settings" class="dropdown-item">Settings</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="/users/logout" class="nav-link">Logout</a>
+        </li>
       {{else}}
         <li class ="nav-item">
           <a class="nav-link" data-toggle="modal" data-target=".bs-example-modal-sm" style="cursor: pointer;">Login</a>
@@ -48,9 +48,9 @@
             </div>
           </div>
         </li>
-       <li class="nav-item">
-        <a href="/users/register" class="nav-link">Register</a>
-      </li>
+        <li class="nav-item">
+          <a href="/users/register" class="nav-link">Register</a>
+        </li>
       {{/if}}
     </ul>
   </div>
