@@ -68,19 +68,19 @@ router.post('/', ensureAuthenticated, (req,res) => {
   //no shoes name
   if(!req.body.shoesname){
     //push on to it with an object with the text of please add a shoes name
-    errors.push({text:'Please add a shoes name.'})
+    errors.push({text:'Please add a shoe name.'})
   }
 
   //no shoes price
   if(!req.body.price){
     //push on to it with an object with the text of please add a shoes price
-    errors.push({text:'Please add a shoes price.'})
+    errors.push({text:'Please add a price.'})
   }
 
     //no shoes name
   if(!req.body.description){
     //push on to it with an object with the text of please add a shoes description
-    errors.push({text:'Please add a shoes description.'})
+    errors.push({text:'Please add a shoe description.'})
   }
 
 
