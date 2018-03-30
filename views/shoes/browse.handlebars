@@ -1,0 +1,18 @@
+<style>
+  body {
+    background: white;
+  }
+</style>
+<!return shoes: it should be an array>
+{{#each shoes}}
+  <div class="card card-body mb-2">
+    <h4>Brand Name: {{brandname}}</h4>
+    <h5>Shoes Name: {{shoesname}}</h5>
+    <h5>Shoes Price: {{price}}</h5>
+    <p>Shoes Description: {{description}}</p>
+   
+    
+  </div>
+{{else}}
+    <p>No shoes listed</p>
+{{/each}}

@@ -108,15 +108,16 @@ app.get('/', (req,res)=> {
   }); //send text 'index' to the browser
 });
 
-//Barter Route
+//Browse Route
 app.get('/Browse', (req,res)=>{
   res.render('browse');
 });
 
 //Barter Route
+/*
 app.get('/Barter', (req,res)=>{
   res.render('barter');
-});
+});*/
 
 //About Route
 app.get('/About', (req,res)=>{
@@ -129,6 +130,7 @@ app.get('/About', (req,res)=>{
 //Anything that goes to /shoes is going to pertain to that shoes file
 app.use('/shoes', shoes );
 app.use('/users', users );
+
 
 const port = 5000; //put a port in a variable
 

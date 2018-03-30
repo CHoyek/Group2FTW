@@ -24,6 +24,21 @@ router.get('/', ensureAuthenticated, (req,res) => {
   });
 
 });
+
+//Shoes Browse Page
+router.get('/browse', (req,res) => {
+  Shoe.find({})
+  .sort({data:'desc'})
+  //return a promise
+  //We can access the reuslts into the shoes variable
+  .then(shoes=> {
+    res.render('shoes/browse', {
+      shoes:shoes
+    });
+  });
+
+});
+
 //Upload Shoes Form
 router.get('/sell', ensureAuthenticated, (req,res)=>{
   res.render('shoes/sell');
