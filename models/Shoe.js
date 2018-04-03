@@ -14,7 +14,7 @@ const ShoeSchema = new Schema ({
     required: true
   },
   price:{
-    type: String,
+    type: Number, // easier for math later
     required: true
   },
   description:{
