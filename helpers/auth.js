@@ -3,7 +3,7 @@ module.exports = {
     if(req.isAuthenticated()){
       return next();
     }
-    req.flash('error_msg', 'Not Authorized');
+    req.flash('error_msg', 'Not Authorized. Please log in.');
     res.redirect('/');
   }//End of ensureAuthenticated
 }//End of module.exports
