@@ -22,10 +22,10 @@ describe('Public Pages', function() {
     })
   })
 
-  describe('/Barter', () => {
+  describe('/shoes/browse', () => {
     it('should load without error', done => {
       // your actual testing urls will likely be `http://localhost:port/path`
-      nightmare.goto('http://localhost:5000/Barter')
+      nightmare.goto('http://localhost:5000/shoes/browse')
         .wait(1000)
         .end()
         .then(function (result) { done() })
@@ -60,6 +60,23 @@ describe('Public Pages', function() {
       .catch(done)
     })
   })
+
+  describe('Login', () => {
+  	it('Should fail to login in a user as the credentials are invalid', done => {
+  		nightmare
+  		.goto('http://localhost:5000/')
+      .wait(1000)
+  		.click('#modalToClick')
+      .wait(1000)
+  		.type('#usernameTest', 't'+Math.round(Math.random()*100000))
+  		.type('#passwordTest', 't'+Math.round(Math.random()*100000))
+  		.click('#submitButtonTest')
+  		.wait(1000)
+  		.end()
+      .then(function (result) { done() })
+      .catch(done)
+     })
+    })
 
 // ^^^^ADD CASE LIKE THIS FOR DUP USER AND MISMATCH PASS
 // ADD CASES FOR INVALID EMAIL -> submit shouldnt work in this case
