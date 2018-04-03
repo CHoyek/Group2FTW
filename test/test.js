@@ -251,5 +251,5 @@ describe('Public Pages', function() {
      })
     })
 
-
+  })
 })
