@@ -11,6 +11,7 @@ const {ensureAuthenticated} = require('../helpers/auth');
   //Load the model into a variable
   const Shoe = mongoose.model('shoes'); //pass the name of the model, which is shoes
 
+ 
 //Shoes Index Page
 router.get('/', ensureAuthenticated, (req,res) => {
   Shoe.find({user:req.user.id})
@@ -36,6 +37,13 @@ router.get('/browse', (req,res) => {
       shoes:shoes
     });
   });
+
+});
+
+//Buy shoes Page
+router.get('/buy', ensureAuthenticated, (req,res) => {
+    
+    res.render('shoes/buy');
 
 });
 
