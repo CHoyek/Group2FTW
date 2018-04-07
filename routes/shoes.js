@@ -26,9 +26,12 @@ router.get('/', ensureAuthenticated, (req,res) => {
 
 });
 
+
+
 //Shoes Browse Page
 router.get('/browse', (req,res) => {
-  Shoe.find({})
+   
+  Shoe.find( {}  ) 
   .sort({data:'desc'})
   //return a promise
   //We can access the reuslts into the shoes variable
@@ -36,9 +39,27 @@ router.get('/browse', (req,res) => {
     res.render('shoes/browse', {
       shoes:shoes
     });
+      
   });
 
 });
+
+//Shoes Browse Page
+router.get('/search', (req,res) => {
+   
+  Shoe.find( { $or: [ { brandname: req.query.key }, { shoesname: req.query.key } ] }  ) 
+  .sort({data:'desc'})
+  //return a promise
+  //We can access the reuslts into the shoes variable
+  .then(shoes=> {
+    res.render('shoes/search', {
+      shoes:shoes
+    });
+      
+  });
+
+});
+
 
 //Buy shoes Page
 router.get('/buy', ensureAuthenticated, (req,res) => {
@@ -46,6 +67,14 @@ router.get('/buy', ensureAuthenticated, (req,res) => {
     res.render('shoes/buy');
 
 });
+
+//Buy shoes Page
+router.get('/search', (req,res) => {
+    
+    res.render('shoes/search');
+
+});
+
 
 //Upload Shoes Form
 router.get('/sell', ensureAuthenticated, (req,res)=>{

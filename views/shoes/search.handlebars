@@ -1,16 +1,12 @@
-
 <style>
   body {
     background: white;
   }
 </style>
-    
-<!search shoes>
 <! row is for the grid system>
 <div class="row">
   <! 6 column div, pushed to the middle>
   <div class="col-md-6 mx-auto mb-3">   
-      <h3 class="text-center">Browse Shoes</h3>
       <form action="/shoes/search" >
         <div class="form-group">
           <label for="key">Search</label>
@@ -21,8 +17,7 @@
     </div>
 </div>
 
-        <!return shoes: it should be an array>
-        {{#each shoes}}
+{{#each shoes}}
           <div class="card card-body mb-2">             
             <h4>Brand Name: {{brandname}}</h4>
             <h5>Shoes Name: {{shoesname}}</h5>
@@ -37,4 +32,3 @@
         {{else}}
             <p>No shoes listed</p>
         {{/each}}
-
