@@ -8,8 +8,10 @@
   <div class="card card-body mb-2">
     <h4>Brand Name: {{brandname}}</h4>
     <h5>Shoes Name: {{shoesname}}</h5>
-    <h5>Shoes Price: {{price}}</h5>
+
+    <h5>Shoes Price: ${{price}}</h5>
     <!--<p>Shoes Description: {{description}}</p>-->
+
     <a class="btn btn-dark btn-block mb-2" href="/shoes/edit/{{id}}">Edit</a>
     <form method ="post" action="/shoes/{{id}}?_method=DELETE">
       <input type="hidden" name="_method" value="DELETE">

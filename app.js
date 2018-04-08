@@ -14,6 +14,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
 
+
 //Load routes
 const shoes = require('./routes/shoes');
 const users = require('./routes/users');
@@ -112,6 +113,7 @@ app.get('/', (req,res)=> {
 app.get('/Browse', (req,res)=>{
   res.render('browse');
 });
+
 
 //Barter Route
 /*
