@@ -19,7 +19,7 @@ const ShoeSchema = new Schema ({
   },
   description:{
     type: String,
-    required: true
+    required: false
   },
   user:{
     type: String,

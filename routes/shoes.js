@@ -130,10 +130,10 @@ router.post('/', ensureAuthenticated, (req,res) => {
   }
 
     //no shoes name
-  if(!req.body.description){
+  /*if(!req.body.description){
     //push on to it with an object with the text of please add a shoes description
     errors.push({text:'Please add a shoe description.'})
-  }
+  }*/
 
 
 if(errors.length > 0){
@@ -150,7 +150,7 @@ if(errors.length > 0){
     brandname: req.body.brandname,
     shoesname: req.body.shoesname,
     price: req.body.price,
-    description: req.body.description,
+    //description: req.body.description,
     user: req.user.id
   }
   //Idea comes from line 30: const Idea = mongoose.model('ideas');
@@ -176,7 +176,7 @@ router.put('/:id', ensureAuthenticated, (req,res)=>{
     shoe.brandname = req.body.brandname;
     shoe.shoesname = req.body.shoesname;
     shoe.price = req.body.price;
-    shoe.description = req.body.description;
+    //shoe.description = req.body.description;
 
     shoe.save()
     //return a promise
