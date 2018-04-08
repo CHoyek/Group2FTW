@@ -12,25 +12,38 @@
   <form action="/shoes/{{shoe.id}}?_method=PUT" method="post">
     <input type="hidden" name="_method" value="PUT">
     <!standard bootstrp markup>
+    <!--<div class="form-group">
+      <label for="brandname">Brand Name</label>
+      <input type="text" class="form-control" name="brandname" value = "{{shoe.brandname}}" required>
+    </div>-->
+
     <div class="form-group">
-    <label for="brandname">Brand Name</label>
-    <input type="text" class="form-control" name="brandname" value = "{{shoe.brandname}}" required>
+      <label for="brandname">Brand Name</label>
+      <select class="form-control" name="brandname" value = "{{shoe.brandname}}" required>
+        <option disabled selected hidden>Select Brand</option>
+        <option >Adidas</option>
+        <option >Air Jordan</option>
+        <option >Asics</option>
+        <option >Nike</option>
+        <option >Reebok</option>
+        <option >Under Armour</option>
+      </select>
     </div>
 
      <div class="form-group">
-    <label for="shoesname">Shoes Name</label>
-    <input type="text" class="form-control" name="shoesname" value ="{{shoe.shoesname}}" required>
+      <label for="shoesname">Shoes Name</label>
+      <input type="text" class="form-control" name="shoesname" value ="{{shoe.shoesname}}" required>
     </div>
-      
+
     <div class="form-group">
-    <label for="price">Shoes Price</label>
-    <input type="text" class="form-control" name="price" value="{{shoe.price}}" required>
+      <label for="price">Shoes Price</label>
+      <input type="text" class="form-control" name="price" value="{{shoe.price}}" required>
     </div>
-      
-    <div class="form-group">
+
+    <!--<div class="form-group">
     <label for="description">Shoes Description</label>
           <textarea class="form-control" name="description" required >{{shoe.description}}</textarea>
-    </div>
+    </div>-->
 
     <!Submit button>
     <button type="submit" class = "btn btn-info ">Submit</button>
