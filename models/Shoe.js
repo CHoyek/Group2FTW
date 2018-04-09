@@ -28,6 +28,10 @@ const ShoeSchema = new Schema ({
   date:{
     type:Date,
     default: Date.now
+  },
+  shoesize:{
+	  type: Number,
+	  required: true
   }
 });
 //We are going to create our model and we are going to call it ideas and it is going to be connected to the idea shcema
