@@ -47,7 +47,7 @@ router.get('/browse', (req,res) => {
 //Shoes Browse Page
 router.get('/search', (req,res) => {
    
-  Shoe.find( { $or: [ { brandname: req.query.key }, { shoesname: req.query.key } ] }  ) 
+  Shoe.find( { $or: [ { brandname: req.query.key }, { shoesname: req.query.key }] }  ) 
   .sort({data:'desc'})
   //return a promise
   //We can access the reuslts into the shoes variable
@@ -134,6 +134,10 @@ router.post('/', ensureAuthenticated, (req,res) => {
     //push on to it with an object with the text of please add a shoes description
     errors.push({text:'Please add a shoe description.'})
   }*/
+   if(!req.body.shoesize){
+    //push on to it with an object with the text of please add a shoes price
+    errors.push({text:'Please add a shoesize.'})
+  }
 
 
 if(errors.length > 0){
@@ -143,7 +147,8 @@ if(errors.length > 0){
   errors:errors,
   //don't clear what users put previously
   brandname:req.body.brandname,
-  shoesname:req.body.shoesname
+  shoesname:req.body.shoesname,
+  shoesize:req.body.shoesize
   });
 }else {
   const newUser = {
@@ -151,7 +156,8 @@ if(errors.length > 0){
     shoesname: req.body.shoesname,
     price: req.body.price,
     //description: req.body.description,
-    user: req.user.id
+    user: req.user.id,
+	shoesize: req.body.shoesize
   }
   //Idea comes from line 30: const Idea = mongoose.model('ideas');
   new Shoe(newUser)
@@ -177,6 +183,7 @@ router.put('/:id', ensureAuthenticated, (req,res)=>{
     shoe.shoesname = req.body.shoesname;
     shoe.price = req.body.price;
     //shoe.description = req.body.description;
+	shoe.shoesize = req.body.shoesize;
 
     shoe.save()
     //return a promise
