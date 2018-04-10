@@ -4,7 +4,7 @@ const assert = require('assert')
 var r1 = Math.round(Math.random()*100000);
 var r2 = Math.round(Math.random()*100000);
 
-var brand = ['Nike', 'Adidas', 'Crocs'];
+var brand = ['Nike', 'Adidas', 'Reebok'];
 var randbrand = brand[Math.floor(Math.random() * brand.length)];
 var shoename = ['Free Run', 'Ultraboost', 'Meme Runners'];
 var randshoename = shoename[Math.floor(Math.random() * shoename.length)];
@@ -53,6 +53,35 @@ describe('Public Pages', function() {
         .catch(done)
     })
   })
+
+
+  describe('Buy Shoes when the user does not log in', () => {
+    it('Should prevent a user to buy shoes', done => {
+      nightmare
+      .goto('http://localhost:5000/shoes/browse')
+      .click ('.row+ .mb-2 .btn-primary')
+      .wait (2000)
+      .wait ('.alert-dismissable')
+      .end()
+      .then(function (result) { done() })
+      .catch(done)
+     })
+    })
+  /*describe('Search Shoe', () => {
+    it('Should find all the shoes with brandname Nike', done => {
+      nightmare
+      .goto('http://localhost:5000/shoes/search')
+      .type ('[type="text]', 'Nike')
+      .click ('#submitbtn')
+      .wait (2000)
+      .evaluate(function() {
+          document.querySelector('h4').innerText;
+      })
+      .end()
+      .then(function (result) { done() })
+      .catch(done)
+    })
+  })*/
 
   describe('/users/register', () => {
     it('should work register a new user then go to homepage', done => {
@@ -230,10 +259,14 @@ describe('Public Pages', function() {
       .wait(1000)
       .click('.dropdown-item:nth-child(2)')
       .wait(1000)
-      .type('.form-group:nth-child(1) .form-control', randbrand)
+      //.type('.form-group:nth-child(1) .form-control', randbrand)
+      //.select('.form-group:nth-child(1) .form-control', Nike)
+      //.click('.form-group:nth-child(1) .form-control')
+      //.wait(1000)
+      .select('.form-group:nth-child(1) .form-control', 'Nike')
       .type('.form-group:nth-child(2) .form-control', randshoename)
       .type('.form-group~ .form-group+ .form-group input', randprice)
-      .type('textarea', randdesc)
+      .select('.form-group+ .form-group select', 10)
       .click('.btn-info')
     //  .wait('.alert-dismissable')
       .wait(1000)
@@ -255,10 +288,11 @@ describe('Public Pages', function() {
       .click('#submitButtonTest')
       .wait(1000)
       .click('.btn-block.mb-2')
-      .evaluate(function() {
+      /*.evaluate(function() {
           document.querySelector('textarea').value = ''
-      })
-      .type('textarea', "NEWLY CHANGED DESCRIPTION")
+      })*/
+      .select('input+ .form-group .form-control', 'Nike')
+      .select('.form-group+ .form-group select', 10)
       .click('.btn-info')
    //   .wait('.alert-dismissable')
       .wait(2000)
