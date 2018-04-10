@@ -25,6 +25,16 @@ router.get('/settings', ensureAuthenticated, (req, res) => {
     });
 });
 
+// //navbar router (needed for balance)
+// router.get('/settings', ensureAuthenticated, (req, res) => {
+//   User.find({username:req.user.username})
+//     .then(users => {
+//       res.render('users/settings', {
+//         users:users
+//       });
+//     });
+// });
+
 //Logout Router
 router.get('/logout', (req, res) => {
     req.logout();
