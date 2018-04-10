@@ -4,12 +4,12 @@
     background: white;
   }
 </style>
-   
+
 <!search shoes>
 <! row is for the grid system>
 <div class="row">
   <! 6 column div, pushed to the middle>
-  <div class="col-md-6 mx-auto mb-3">   
+  <div class="col-md-6 mx-auto mb-3">
       <h3 class="text-center">Browse Shoes</h3>
       <form action="/shoes/search" >
         <div class="form-group">
@@ -23,17 +23,17 @@
 
         <!return shoes: it should be an array>
         {{#each shoes}}
-          <div class="card card-body mb-2">             
+          <div class="card card-body mb-2">
             <h4>Brand Name: {{brandname}}</h4>
             <h5>Shoes Name: {{shoesname}}</h5>
             <h5>Shoes Price: ${{price}}</h5>
             <!--<p>Shoes Description: {{description}}</p>-->
 			<h5>Shoe Size: {{shoesize}}</h5>
-              
-      <a class="btn btn-primary btn-block mb-2" href="/shoes/buy">Buy</a>
-      <a class="btn btn-success btn-block mb-2" href="/shoes/buy">Trade</a>
-   
-              
+
+      <a class="btn btn-primary btn-block mb-2" href="/shoes/buy/{{id}}">Buy</a>
+      <a class="btn btn-success btn-block mb-2" href="/shoes/buy/{{id}}">Trade</a>
+
+
           </div>
         {{else}}
             <p>No shoes listed</p>
