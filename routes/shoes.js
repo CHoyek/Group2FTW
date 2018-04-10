@@ -11,7 +11,7 @@ const {ensureAuthenticated} = require('../helpers/auth');
   //Load the model into a variable
   const Shoe = mongoose.model('shoes'); //pass the name of the model, which is shoes
 
- 
+
 //Shoes Index Page
 router.get('/', ensureAuthenticated, (req,res) => {
   Shoe.find({user:req.user.id})
@@ -30,8 +30,8 @@ router.get('/', ensureAuthenticated, (req,res) => {
 
 //Shoes Browse Page
 router.get('/browse', (req,res) => {
-   
-  Shoe.find( {}  ) 
+
+  Shoe.find( {}  )
   .sort({data:'desc'})
   //return a promise
   //We can access the reuslts into the shoes variable
@@ -39,15 +39,15 @@ router.get('/browse', (req,res) => {
     res.render('shoes/browse', {
       shoes:shoes
     });
-      
+
   });
 
 });
 
 //Shoes Browse Page
 router.get('/search', (req,res) => {
-   
-  Shoe.find( { $or: [ { brandname: req.query.key }, { shoesname: req.query.key }] }  ) 
+
+  Shoe.find( { $or: [ { brandname: req.query.key }, { shoesname: req.query.key }] }  )
   .sort({data:'desc'})
   //return a promise
   //We can access the reuslts into the shoes variable
@@ -55,22 +55,38 @@ router.get('/search', (req,res) => {
     res.render('shoes/search', {
       shoes:shoes
     });
-      
+
   });
 
 });
 
 
 //Buy shoes Page
-router.get('/buy', ensureAuthenticated, (req,res) => {
-    
-    res.render('shoes/buy');
+router.get('/buy/:id', ensureAuthenticated, (req,res) => {
+
+  //Find one item, not an array
+  //pass an obejct with a query
+  Shoe.findOne({
+    //get the id passed in
+    _id: req.params.id
+  })
+  .then(shoe =>{
+    if(shoe.user == req.user.id){
+      req.flash('error_msg', 'You may not purchase your own shoe.');
+      res.redirect('/shoes/browse');
+    }else {
+      res.render('shoes/buy',{
+        shoe:shoe
+      });
+    }
+
+  });
 
 });
 
 //Buy shoes Page
 router.get('/search', (req,res) => {
-    
+
     res.render('shoes/search');
 
 });
