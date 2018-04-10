@@ -220,6 +220,28 @@ describe('Public Pages', function() {
       .catch(done)
      })
     })
+	
+	
+	
+	describe('Valid Logout', () => {
+  	it('Should logout', done => {
+  		nightmare
+  		.goto('http://localhost:5000/')
+      .wait(1000)
+  		.click('#modalToClick')
+      .wait(1000)
+  		.type('#usernameTest', 't'+r1)
+  		.type('#passwordTest', '1234')
+  		.click('#submitButtonTest')
+      .wait(1000)
+	  nightmare.
+		goto('http://localhost:5000/users/logout')
+	  .wait(1000)
+  		.end()
+      .then(function (result) { done() })
+      .catch(done)
+     })
+    })
 
   describe('User Settings', () => {
     it('Details in user settings should be correct', done => {
