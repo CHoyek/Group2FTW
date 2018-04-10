@@ -84,7 +84,8 @@ router.get('/buy/:id', ensureAuthenticated, (req,res) => {
 
 });
 
-//Buy shoes Page
+
+//Search shoes Page
 router.get('/search', (req,res) => {
 
     res.render('shoes/search');
