@@ -156,6 +156,23 @@ describe('Public Pages', function() {
      })
     })
 
+    describe('No password on login', () => {
+
+    	it('Should fail to login in a user as the credentials are invalid', done => {
+    		nightmare
+    		.goto('http://localhost:5000/')
+        .wait(1000)
+    		.click('#modalToClick')
+        .wait(1000)
+    		.type('#usernameTest', 't'+Math.round(Math.random()*100000))
+    		.click('#submitButtonTest')
+    		.wait(2000)
+    		.end()
+        .then(function (result) { done() })
+        .catch(done)
+       })
+      })
+
   describe('Valid Login', () => {
   	it('Should login in a user as the credentials are valid', done => {
   		nightmare
