@@ -69,10 +69,22 @@
         <div class="modal-body">
           <!Modal body for check out starts here>
           <div class="row mx-auto">
-            <form method="post" action="/shoes/buy">
+            <form action="post" action="/shoes/buy">
               <div class="form-group">
-                <label for="address">Street Address</label>
+                <label for="name">Name</label>
+                <input type="name" name="name" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="phone" name="phone" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="address">Street</label>
                 <input type="address" name="address" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="city" name="city" class="form-control" required>
               </div>
               <div class="form-group">
                 <label for="Zip Code">Zip Code</label>
@@ -82,7 +94,8 @@
                 <label for="state">State</label>
                 <input type="state" name="state" class="form-control" required>
               </div>
-              <button type="submit" class = "btn-info">Submit</button>
+              <!Submit button>
+              <button type="submit" class = "btn btn-info ">Submit</button>
             </form>
           </div>
         </div>
