@@ -67,6 +67,34 @@ describe('Public Pages', function() {
       .catch(done)
      })
     })
+
+    describe('Trade shoes when the user does not log in', () => {
+    it('Should prevent a user to trade shoes', done => {
+      nightmare
+      .goto('http://localhost:5000/shoes/browse')
+      .click ('.row+ .mb-2 .btn-success')
+      .wait (2000)
+      .wait ('#bigbutton')
+      .end()
+      .then(function (result) { done() })
+      .catch(done)
+     })
+    })
+
+    /*describe('Trade shoes when the user logs in', () => {
+    it('A user should go to shoes/buy page', done => {
+      nightmare
+      .goto('http://localhost:5000/shoes/browse')
+      .click ('.row+ .mb-2 .btn-primary')
+      .wait (2000)
+      .evaluate(function() {
+          document.querySelector('h3').innerText;
+      })
+      .end()
+      .then(function (result) { done() })
+      .catch(done)
+     })
+   })*/
   /*describe('Search Shoe', () => {
     it('Should find all the shoes with brandname Nike', done => {
       nightmare

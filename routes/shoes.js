@@ -11,7 +11,7 @@ const {ensureAuthenticated} = require('../helpers/auth');
   //Load the model into a variable
   const Shoe = mongoose.model('shoes'); //pass the name of the model, which is shoes
 
- 
+
 //Shoes Index Page
 router.get('/', ensureAuthenticated, (req,res) => {
   Shoe.find({user:req.user.id})
@@ -30,8 +30,8 @@ router.get('/', ensureAuthenticated, (req,res) => {
 
 //Shoes Browse Page
 router.get('/browse', (req,res) => {
-   
-  Shoe.find( {}  ) 
+
+  Shoe.find( {}  )
   .sort({data:'desc'})
   //return a promise
   //We can access the reuslts into the shoes variable
@@ -39,15 +39,15 @@ router.get('/browse', (req,res) => {
     res.render('shoes/browse', {
       shoes:shoes
     });
-      
+
   });
 
 });
 
 //Shoes Browse Page
 router.get('/search', (req,res) => {
-   
-  Shoe.find( { $or: [ { brandname: req.query.key }, { shoesname: req.query.key }] }  ) 
+
+  Shoe.find( { $or: [ { brandname: req.query.key }, { shoesname: req.query.key }] }  )
   .sort({data:'desc'})
   //return a promise
   //We can access the reuslts into the shoes variable
@@ -55,7 +55,7 @@ router.get('/search', (req,res) => {
     res.render('shoes/search', {
       shoes:shoes
     });
-      
+
   });
 
 });
@@ -63,14 +63,14 @@ router.get('/search', (req,res) => {
 
 //Buy shoes Page
 router.get('/buy', ensureAuthenticated, (req,res) => {
-    
+
     res.render('shoes/buy');
 
 });
 
 //Buy shoes Page
 router.get('/search', (req,res) => {
-    
+
     res.render('shoes/search');
 
 });
@@ -183,7 +183,7 @@ router.put('/:id', ensureAuthenticated, (req,res)=>{
     shoe.shoesname = req.body.shoesname;
     shoe.price = req.body.price;
     //shoe.description = req.body.description;
-	shoe.shoesize = req.body.shoesize;
+	  shoe.shoesize = req.body.shoesize;
 
     shoe.save()
     //return a promise
