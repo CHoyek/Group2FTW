@@ -26,12 +26,23 @@ router.get('/', ensureAuthenticated, (req,res) => {
 
 });
 
+router.get('/purchases', ensureAuthenticated, (req,res) => {
+  Shoe.find({user:req.user.id, forsale: false})
+  .sort({data:'desc'})
+  //return a promise
+  //We can access the reuslts into the shoes variable
+  .then(shoes=> {
+    res.render('shoes/purchases', {
+      shoes:shoes
+    });
+  });
 
+});
 
 //Shoes Browse Page
 router.get('/browse', (req,res) => {
 
-  Shoe.find( {}  )
+  Shoe.find( {forsale: true}  )
   .sort({data:'desc'})
   //return a promise
   //We can access the reuslts into the shoes variable
@@ -47,7 +58,7 @@ router.get('/browse', (req,res) => {
 //Shoes Browse Page
 router.get('/search', (req,res) => {
 
-  Shoe.find( { $or: [ { brandname: req.query.key }, { shoesname: req.query.key }] }  )
+  Shoe.find( { $or: [ { brandname: req.query.key }, { shoesname: req.query.key }], forsale: true }  )
   .sort({data:'desc'})
   //return a promise
   //We can access the reuslts into the shoes variable
@@ -62,13 +73,30 @@ router.get('/search', (req,res) => {
 
 
 //Buy shoes Page
-router.get('/buy', ensureAuthenticated, (req,res) => {
+router.get('/buy/:id', ensureAuthenticated, (req,res) => {
 
-    res.render('shoes/buy');
+  //Find one item, not an array
+  //pass an obejct with a query
+  Shoe.findOne({
+    //get the id passed in
+    _id: req.params.id
+  })
+  .then(shoe =>{
+    if(shoe.user == req.user.id){
+      req.flash('error_msg', 'You may not purchase your own shoe.');
+      res.redirect('/shoes/browse');
+    }else {
+      res.render('shoes/buy',{
+        shoe:shoe
+      });
+    }
+
+  });
 
 });
 
-//Buy shoes Page
+
+//Search shoes Page
 router.get('/search', (req,res) => {
 
     res.render('shoes/search');
@@ -134,10 +162,14 @@ router.post('/', ensureAuthenticated, (req,res) => {
     //push on to it with an object with the text of please add a shoes description
     errors.push({text:'Please add a shoe description.'})
   }*/
-   if(!req.body.shoesize){
+  if(!req.body.shoesize){
     //push on to it with an object with the text of please add a shoes price
     errors.push({text:'Please add a shoesize.'})
   }
+  if(!req.body.forsale){
+   //push on to it with an object with the text of please add a shoes price
+   errors.push({text:'Please indicate for sale status.'})
+ }
 
 
 if(errors.length > 0){
@@ -148,7 +180,8 @@ if(errors.length > 0){
   //don't clear what users put previously
   brandname:req.body.brandname,
   shoesname:req.body.shoesname,
-  shoesize:req.body.shoesize
+  shoesize:req.body.shoesize,
+  forsale:rew.body.forsale
   });
 }else {
   const newUser = {
@@ -157,7 +190,8 @@ if(errors.length > 0){
     price: req.body.price,
     //description: req.body.description,
     user: req.user.id,
-	shoesize: req.body.shoesize
+	  shoesize: req.body.shoesize,
+    forsale: req.body.forsale
   }
   //Idea comes from line 30: const Idea = mongoose.model('ideas');
   new Shoe(newUser)
@@ -184,6 +218,7 @@ router.put('/:id', ensureAuthenticated, (req,res)=>{
     shoe.price = req.body.price;
     //shoe.description = req.body.description;
 	  shoe.shoesize = req.body.shoesize;
+    //shoe.forsale = req.body.forsale;
 
     shoe.save()
     //return a promise

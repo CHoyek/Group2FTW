@@ -6,8 +6,9 @@ var r2 = Math.round(Math.random()*100000);
 
 var brand = ['Nike', 'Adidas', 'Reebok'];
 var randbrand = brand[Math.floor(Math.random() * brand.length)];
-var shoename = ['Free Run', 'Ultraboost', 'Meme Runners'];
-var randshoename = shoename[Math.floor(Math.random() * shoename.length)];
+// var shoename = ['Free Run', 'Ultraboost', 'Meme Runners'];
+// var randshoename = shoename[Math.floor(Math.random() * shoename.length)];
+var randshoename = Math.round(Math.random()*10000);
 var randprice = Math.round(Math.random()*100);
 var randdesc = "test description "+Math.round(Math.random()*1000);
 
@@ -213,6 +214,23 @@ describe('Public Pages', function() {
      })
     })
 
+    describe('No password on login', () => {
+
+    	it('Should fail to login in a user as the credentials are invalid', done => {
+    		nightmare
+    		.goto('http://localhost:5000/')
+        .wait(1000)
+    		.click('#modalToClick')
+        .wait(1000)
+    		.type('#usernameTest', 't'+Math.round(Math.random()*100000))
+    		.click('#submitButtonTest')
+    		.wait(2000)
+    		.end()
+        .then(function (result) { done() })
+        .catch(done)
+       })
+      })
+
   describe('Valid Login', () => {
   	it('Should login in a user as the credentials are valid', done => {
   		nightmare
@@ -225,6 +243,28 @@ describe('Public Pages', function() {
   		.click('#submitButtonTest')
   		.wait('#navbarDropdownMenuLink')
       .wait(1000)
+  		.end()
+      .then(function (result) { done() })
+      .catch(done)
+     })
+    })
+	
+	
+	
+	describe('Valid Logout', () => {
+  	it('Should logout', done => {
+  		nightmare
+  		.goto('http://localhost:5000/')
+      .wait(1000)
+  		.click('#modalToClick')
+      .wait(1000)
+  		.type('#usernameTest', 't'+r1)
+  		.type('#passwordTest', '1234')
+  		.click('#submitButtonTest')
+      .wait(1000)
+	  nightmare.
+		goto('http://localhost:5000/users/logout')
+	  .wait(1000)
   		.end()
       .then(function (result) { done() })
       .catch(done)
@@ -281,6 +321,27 @@ describe('Public Pages', function() {
       .click('.btn-info')
     //  .wait('.alert-dismissable')
       .wait(1000)
+      .end()
+      .then(function (result) { done() })
+      .catch(done)
+     })
+    })
+
+  describe('Search For Shoe', () => {
+    it('Shoe should be found via the browse page\'s search bar', done => {
+      nightmare
+      //search bar stuff
+      .goto('http://localhost:5000/')
+      .wait(1000)
+      .click('#modalToClick')
+      .wait(1000)
+      .type('#usernameTest', 't'+r1)
+      .type('#passwordTest', '1234')
+      .click('#submitButtonTest')
+      .click('.navbar-nav:nth-child(1) .nav-item:nth-child(1) .nav-link')
+      .type('.form-control', randshoename)
+      .click('#submitbtn')
+      .wait('.row+ .mb-2')
       .end()
       .then(function (result) { done() })
       .catch(done)

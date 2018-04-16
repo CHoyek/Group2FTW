@@ -20,6 +20,10 @@ const UserSchema = new Schema ({
   date:{
     type:Date,
     default: Date.now
+  },
+  bal:{
+    type: Number,
+    default: 499.99
   }
 });
 //We are going to create our model and we are going to call it users and it is going to be connected to the user shcema

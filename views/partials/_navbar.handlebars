@@ -24,12 +24,16 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       {{#if user}}
+        <!-- <li class="nav-item">
+          <a href="/users/settings" class="nav-link">Balance: ${{bal}}</a>
+        </li> -->
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink">My Account</a>
           <div class="dropdown-menu">
             <a href="/shoes" class="dropdown-item ">My shoes</a>
             <a href="/shoes/sell" class="dropdown-item ">Sell Shoes</a>
   		      <a href="/users/settings" class="dropdown-item">Settings</a>
+            <a href="/shoes/purchases" class="dropdown-item">Purchases</a>
           </div>
         </li>
         <li class="nav-item">

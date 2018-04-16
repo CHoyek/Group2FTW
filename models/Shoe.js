@@ -32,6 +32,10 @@ const ShoeSchema = new Schema ({
   shoesize:{
 	  type: Number,
 	  required: true
+  },
+  forsale:{
+    type: Boolean,
+    default: true
   }
 });
 //We are going to create our model and we are going to call it ideas and it is going to be connected to the idea shcema
