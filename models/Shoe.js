@@ -5,10 +5,10 @@ const Schema = mongoose.Schema;
 //Create Schema
 const ShoeSchema = new Schema ({
   //Pass objects with different fields we want
-  brandname:{
+  /*brandname:{
     type: String,
     require: true //we want this to be required
-  },
+  },*/
   shoesname:{
     type: String,
     required: true

@@ -140,10 +140,10 @@ router.post('/', ensureAuthenticated, (req,res) => {
   let errors = [];
 
   //no brandname
-  if(!req.body.brandname){
+  /*if(!req.body.brandname){
     //push on to it with an object with the text of please add a brand name
     errors.push({text:'Please add a brand name.'})
-  }
+  }*/
 
   //no shoes name
   if(!req.body.shoesname){
@@ -178,14 +178,14 @@ if(errors.length > 0){
     //pass in errors
   errors:errors,
   //don't clear what users put previously
-  brandname:req.body.brandname,
+  //brandname:req.body.brandname,
   shoesname:req.body.shoesname,
   shoesize:req.body.shoesize,
-  forsale:rew.body.forsale
+  forsale:req.body.forsale
   });
 }else {
   const newUser = {
-    brandname: req.body.brandname,
+    //brandname: req.body.brandname,
     shoesname: req.body.shoesname,
     price: req.body.price,
     //description: req.body.description,
@@ -213,7 +213,7 @@ router.put('/:id', ensureAuthenticated, (req,res)=>{
   })
   .then(shoe => {
     //new values
-    shoe.brandname = req.body.brandname;
+    //shoe.brandname = req.body.brandname;
     shoe.shoesname = req.body.shoesname;
     shoe.price = req.body.price;
     //shoe.description = req.body.description;
