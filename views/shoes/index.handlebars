@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <a class="btn btn-dark btn-block mb-2" href="/shoes/edit/{{id}}">Edit</a>
+    <a class="btn btn-dark btn-block mb-2" id="editbutton" href="/shoes/edit/{{id}}">Edit</a>
     <form method ="post" action="/shoes/{{id}}?_method=DELETE">
       <input type="hidden" name="_method" value="DELETE">
       <!create a submit button>
