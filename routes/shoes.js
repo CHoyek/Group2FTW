@@ -152,9 +152,9 @@ router.post('/', ensureAuthenticated, (req,res) => {
   }
 
   //no shoes price
-  if(!req.body.price){
+  if(!req.body.price && !req.body.tradefor){
     //push on to it with an object with the text of please add a shoes price
-    errors.push({text:'Please add a price.'})
+    errors.push({text:'Please add a price or trade.'})
   }
 
     //no shoes name
@@ -174,14 +174,16 @@ router.post('/', ensureAuthenticated, (req,res) => {
 
 if(errors.length > 0){
   //rerender the form
-  res.render('/sell',{
+  res.render('shoes/sell',{
     //pass in errors
   errors:errors,
   //don't clear what users put previously
   //brandname:req.body.brandname,
   shoesname:req.body.shoesname,
+  price: req.body.price,
   shoesize:req.body.shoesize,
-  forsale:req.body.forsale
+  forsale:req.body.forsale,
+  tradefor:req.body.tradefor
   });
 }else {
   const newUser = {
@@ -191,7 +193,8 @@ if(errors.length > 0){
     //description: req.body.description,
     user: req.user.id,
 	  shoesize: req.body.shoesize,
-    forsale: req.body.forsale
+    forsale: req.body.forsale,
+    tradefor: req.body.tradefor
   }
   //Idea comes from line 30: const Idea = mongoose.model('ideas');
   new Shoe(newUser)

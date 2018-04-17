@@ -15,12 +15,12 @@ const ShoeSchema = new Schema ({
   },
   price:{
     type: Number, // easier for math later
-    required: true
-  },
+    required: false
+  },/*
   description:{
     type: String,
     required: false
-  },
+  },*/
   user:{
     type: String,
     required: true
@@ -36,6 +36,10 @@ const ShoeSchema = new Schema ({
   forsale:{
     type: Boolean,
     default: true
+  },
+  tradefor:{
+    type:String,
+    required: false
   }
 });
 //We are going to create our model and we are going to call it ideas and it is going to be connected to the idea shcema
