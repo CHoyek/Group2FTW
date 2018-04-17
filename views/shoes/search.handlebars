@@ -6,10 +6,10 @@
 <! row is for the grid system>
 <div class="row">
   <! 6 column div, pushed to the middle>
-  <div class="col-md-6 mx-auto mb-3">   
+  <div class="col-md-6 mx-auto mb-3">
       <form action="/shoes/search" >
         <div class="form-group">
-          <label for="key">Search</label>
+          <label for="key"></label>
           <input type="text" name="key" class="form-control" value="{{key}}" >
         </div>
         <button type="submit" id = "submitbtn" class = "btn-info">Submit</button>
@@ -18,7 +18,7 @@
 </div>
 
 {{#each shoes}}
-          <div class="card card-body mb-2">             
+          <div class="card card-body mb-2">
            <!-- <h4>Brand Name: {{brandname}}</h4>-->
             <h5>Shoes Name: {{shoesname}}</h5>
             <h5>Shoes Price: ${{price}}</h5>
@@ -27,8 +27,8 @@
             <h5>Trade for: {{tradefor}}</h5>
       <a class="btn btn-primary btn-block mb-2" href="/shoes/buy/{{id}}">Buy</a>
       <a class="btn btn-success btn-block mb-2" href="/shoes/buy/{{id}}">Trade</a>
-   
-              
+
+
           </div>
         {{else}}
             <p>No shoes listed</p>
