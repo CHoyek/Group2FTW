@@ -240,10 +240,10 @@ router.post('/', ensureAuthenticated, (req,res) => {
     //push on to it with an object with the text of please add a shoes price
     errors.push({text:'Please add a shoesize.'})
   }
-  if(!req.body.forsale){
+  /*if(!req.body.forsale){
    //push on to it with an object with the text of please add a shoes price
    errors.push({text:'Please indicate for sale status.'})
-  }
+ }*/
 
 
 if(errors.length > 0){
@@ -256,7 +256,7 @@ if(errors.length > 0){
   shoesname:req.body.shoesname,
   price: req.body.price,
   shoesize:req.body.shoesize,
-  forsale:req.body.forsale,
+  //forsale:req.body.forsale,
   tradefor:req.body.tradefor
   });
 }else {
@@ -267,7 +267,7 @@ if(errors.length > 0){
     //description: req.body.description,
     user: req.user.id,
 	  shoesize: req.body.shoesize,
-    forsale: req.body.forsale,
+    //forsale: req.body.forsale,
     tradefor: req.body.tradefor
   }
   //Idea comes from line 30: const Idea = mongoose.model('ideas');
