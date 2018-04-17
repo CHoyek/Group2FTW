@@ -58,7 +58,7 @@ router.get('/browse', (req,res) => {
 //Shoes Browse Page
 router.get('/search', (req,res) => {
 
-  Shoe.find( { $or: [ { brandname: req.query.key }, { shoesname: req.query.key }], forsale: true }  )
+  Shoe.find( { $or: [  { brandname: {$regex: req.query.key, $options: "i"}}, { shoesname: {$regex: req.query.key, $options: "i"}}], forsale: true }  )
   .sort({data:'desc'})
   //return a promise
   //We can access the reuslts into the shoes variable
