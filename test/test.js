@@ -56,24 +56,24 @@ describe('Public Pages', function() {
   })
 
 
-  describe('Buy Shoes when the user does not log in', () => {
-    it('Should prevent a user to buy shoes', done => {
-      nightmare
-      .goto('http://localhost:5000/shoes/browse')
-      .click ('.row+ .mb-2 .btn-primary')
-      .wait (2000)
-      .wait ('.alert-dismissable')
-      .end()
-      .then(function (result) { done() })
-      .catch(done)
-     })
-    })
+  // describe('Buy Shoes when the user does not log in', () => {
+  //   it('Should prevent a user to buy shoes', done => {
+  //     nightmare
+  //     .goto('http://localhost:5000/shoes/browse')
+  //     .click ('.row+ .mb-2 .btn-primary')
+  //     .wait (2000)
+  //     .wait ('.alert-dismissable')
+  //     .end()
+  //     .then(function (result) { done() })
+  //     .catch(done)
+  //    })
+  //   })
 
     describe('Trade shoes when the user does not log in', () => {
     it('Should prevent a user to trade shoes', done => {
       nightmare
       .goto('http://localhost:5000/shoes/browse')
-      .click ('.row+ .mb-2 .btn-success')
+      .click ('.btn-block')
       .wait (2000)
       .wait ('#bigbutton')
       .end()
@@ -248,9 +248,9 @@ describe('Public Pages', function() {
       .catch(done)
      })
     })
-	
-	
-	
+
+
+  
 	describe('Valid Logout', () => {
   	it('Should logout', done => {
   		nightmare
@@ -314,10 +314,10 @@ describe('Public Pages', function() {
       //.select('.form-group:nth-child(1) .form-control', Nike)
       //.click('.form-group:nth-child(1) .form-control')
       //.wait(1000)
-      .select('.form-group:nth-child(1) .form-control', 'Nike')
-      .type('.form-group:nth-child(2) .form-control', randshoename)
-      .type('.form-group~ .form-group+ .form-group input', randprice)
-      .select('.form-group+ .form-group select', 10)
+      .select('.form-group:nth-child(1) .form-control', 'adidas Yeezy 350 v2 Beluga')
+      .type('input', 50.25)
+      .select('.form-group:nth-child(3) .form-control', 10)
+      .select('.form-group:nth-child(4) .form-control', 'Nike 2016 Air Mag')
       .click('.btn-info')
     //  .wait('.alert-dismissable')
       .wait(1000)
@@ -339,7 +339,7 @@ describe('Public Pages', function() {
       .type('#passwordTest', '1234')
       .click('#submitButtonTest')
       .click('.navbar-nav:nth-child(1) .nav-item:nth-child(1) .nav-link')
-      .type('.form-control', randshoename)
+      .type('.form-control', "Yeezy")
       .click('#submitbtn')
       .wait('.row+ .mb-2')
       .end()
@@ -358,16 +358,19 @@ describe('Public Pages', function() {
       .type('#usernameTest', 't'+r1)
       .type('#passwordTest', '1234')
       .click('#submitButtonTest')
-      .wait(1000)
-      .click('.btn-block.mb-2')
+      .wait('#editbutton')
+      .click('#editbutton')
       /*.evaluate(function() {
           document.querySelector('textarea').value = ''
       })*/
-      .select('input+ .form-group .form-control', 'Nike')
-      .select('.form-group+ .form-group select', 10)
+      .select('input+ .form-group .form-control', 'adidas Yeezy 350 v2 Beluga')
+      .type('input', 50.25)
+      .select('.form-group:nth-child(4) .form-control', 12)
+      .select('.form-group:nth-child(5) .form-control', 'Nike 2016 Air Mag')
+      .wait(1000)
       .click('.btn-info')
-   //   .wait('.alert-dismissable')
-      .wait(2000)
+      .wait('.alert-dismissable')
+      .wait(1000)
       .end()
       .then(function (result) { done() })
       .catch(done)
