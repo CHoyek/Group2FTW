@@ -4,17 +4,20 @@ const router = express.Router();
 const {ensureAuthenticated} = require('../helpers/auth');
 
 
-//Load Shoe Model
+  //Load Shoe Model
   //dot means that we are looking in the current directory that we're in. We are in app js, so we are looking in the current directory into models and then we want to look at Shoe (just the name of file, don't need to put js)
   // ../ outside the folder
   require('../models/Shoe');
   //Load the model into a variable
   const Shoe = mongoose.model('shoes'); //pass the name of the model, which is shoes
 
+  require('../models/User');
+  const User = mongoose.model('users');
+
 
 //Shoes Index Page
 router.get('/', ensureAuthenticated, (req,res) => {
-  Shoe.find({user:req.user.id})
+  Shoe.find({user:req.user.id, forsale:true})
   .sort({data:'desc'})
   //return a promise
   //We can access the reuslts into the shoes variable
@@ -58,7 +61,7 @@ router.get('/browse', (req,res) => {
 //Shoes Browse Page
 router.get('/search', (req,res) => {
 
-  Shoe.find( { $or: [ { brandname: req.query.key }, { shoesname: req.query.key }], forsale: true }  )
+  Shoe.find( { $or: [  { brandname: {$regex: req.query.key, $options: "i"}}, { shoesname: {$regex: req.query.key, $options: "i"}}], forsale: true }  )
   .sort({data:'desc'})
   //return a promise
   //We can access the reuslts into the shoes variable
@@ -92,7 +95,55 @@ router.get('/buy/:id', ensureAuthenticated, (req,res) => {
     }
 
   });
+});
 
+router.put('/buy1/:id', ensureAuthenticated, (req,res)=>{
+  User.find({username:req.user.username})
+    .then(user => {
+      Shoe.findOne({
+        _id: req.params.id
+      })
+      .then(shoe => {
+        req.user.bal = (req.user.bal - shoe.price).toFixed(2);
+        shoe.user = req.user._id; //idk if this works yet
+
+
+
+        // User.find({_id:shoe.user})
+        // .then(user =>{
+        //   user.bal = (user.bal + shoe.price).toFixed(2);
+        // });
+
+
+
+
+        shoe.forsale = false;
+        req.user.save().then(user =>{
+          req.flash('success_msg', 'Your wallet is now lighter');
+          // res.redirect('/');
+          })
+          .catch(err => {
+          console.log(err);
+          return;
+          });
+        shoe.save()
+        //return a promise
+        .then(shoe => {
+          req.flash('success_msg', ' Trade Confirmed. Shoe no longer for sale.');
+          res.redirect('/shoes/purchases');
+        })
+      });
+      });
+  // Shoe.findOne({_id:req.params.id})
+  // .then(shoe => {
+  //   shoe.forsale = false;
+  //   shoe.save()
+  //   //return a promise
+  //   .then(shoe => {
+  //     req.flash('success_msg', ' Trade Confirmed. Shoe no longer for sale.');
+  //     res.redirect('/');
+  //   })
+  // });
 });
 
 //Trade shoes Page
