@@ -25,6 +25,16 @@ router.get('/settings', ensureAuthenticated, (req, res) => {
     });
 });
 
+//Page for users to add balance
+router.get('/addBalance', ensureAuthenticated, (req, res) => {
+  User.find({username:req.user.username})
+    .then(users => {
+      res.render('users/addBalance', {
+        users:users
+      });
+    });
+});
+
 // //navbar router (needed for balance)
 // router.get('/settings', ensureAuthenticated, (req, res) => {
 //   User.find({username:req.user.username})
