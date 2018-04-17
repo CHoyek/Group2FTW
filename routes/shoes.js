@@ -146,28 +146,28 @@ router.put('/buy1/:id', ensureAuthenticated, (req,res)=>{
   // });
 });
 
-//Trade shoes Page
-router.get('/trade/:id', ensureAuthenticated, (req,res) => {
-
-  //Find one item, not an array
-  //pass an obejct with a query
-  Shoe.findOne({
-    //get the id passed in
-    _id: req.params.id
-  })
-  .then(shoe =>{
-    if(shoe.user == req.user.id){
-      req.flash('error_msg', 'You may not purchase your own shoe.');
-      res.redirect('/shoes/browse');
-    }else {
-      res.render('shoes/trade',{
-        shoe:shoe
-      });
-    }
-
-  });
-
-});
+// //Trade shoes Page
+// router.get('/trade/:id', ensureAuthenticated, (req,res) => {
+//
+//   //Find one item, not an array
+//   //pass an obejct with a query
+//   Shoe.findOne({
+//     //get the id passed in
+//     _id: req.params.id
+//   })
+//   .then(shoe =>{
+//     if(shoe.user == req.user.id){
+//       req.flash('error_msg', 'You may not purchase your own shoe.');
+//       res.redirect('/shoes/browse');
+//     }else {
+//       res.render('shoes/trade',{
+//         shoe:shoe
+//       });
+//     }
+//
+//   });
+//
+// });
 
 
 //Search shoes Page
@@ -240,10 +240,10 @@ router.post('/', ensureAuthenticated, (req,res) => {
     //push on to it with an object with the text of please add a shoes price
     errors.push({text:'Please add a shoesize.'})
   }
-  if(!req.body.forsale){
+  /*if(!req.body.forsale){
    //push on to it with an object with the text of please add a shoes price
    errors.push({text:'Please indicate for sale status.'})
-  }
+ }*/
 
 
 if(errors.length > 0){
@@ -256,7 +256,7 @@ if(errors.length > 0){
   shoesname:req.body.shoesname,
   price: req.body.price,
   shoesize:req.body.shoesize,
-  forsale:req.body.forsale,
+  //forsale:req.body.forsale,
   tradefor:req.body.tradefor
   });
 }else {
@@ -267,7 +267,7 @@ if(errors.length > 0){
     //description: req.body.description,
     user: req.user.id,
 	  shoesize: req.body.shoesize,
-    forsale: req.body.forsale,
+    //forsale: req.body.forsale,
     tradefor: req.body.tradefor
   }
   //Idea comes from line 30: const Idea = mongoose.model('ideas');

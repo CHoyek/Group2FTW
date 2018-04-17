@@ -45,7 +45,7 @@
 </style>
 <body>
   <div id="test">
-    <p>Confirm your purchase</p>
+    <p>Confirm your exchange</p>
   </div>
 </body>
 <!-- <form action="/shoes/buy/{{shoe.id}}" method="get"> -->
@@ -55,8 +55,9 @@
     <h4>Shoe Name: {{shoe.shoesname}}</h4>
     <h4>Price: ${{shoe.price}}</h4>
     <h4>Shoe Size: {{shoe.shoesize}}</h4>
+    <h4>Trading for: {{shoe.tradefor}}</h4>
   </div>
-  <a class="nav-link btn btn-primary btn-block mb-2" id="modalToClick" data-toggle="modal" data-target=".bs-example-modal-sm" style="cursor: pointer;">Check Out</a>
+  <a class="nav-link btn btn-info btn-block mb-2" id="modalToClick" data-toggle="modal" data-target=".bs-example-modal-sm" style="cursor: pointer;">Check Out</a>
 
   <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
