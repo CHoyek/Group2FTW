@@ -24,12 +24,19 @@
         <!return shoes: it should be an array>
         {{#each shoes}}
           <div class="card card-body mb-2">
-            <!--<h4>Brand Name: {{brandname}}</h4>-->
-            <h4>Shoes Name: {{shoesname}}</h5>
-            <h5>Shoes Price: ${{price}}</h5>
-            <!--<p>Shoes Description: {{description}}</p>-->
-			      <h5>Shoe Size: {{shoesize}}</h5>
-              <h5>Trade for: {{tradefor}}</h5>
+              <!--<h4>Brand Name: {{brandname}}</h4>-->
+            <div class="row">
+              <div class="col-md-8">
+                <h5>Shoes Name: {{shoesname}}</h5>
+                <h5>Shoes Price: ${{price}}</h5>
+                <!--<p>Shoes Description: {{description}}</p>-->
+    			      <h5>Shoe Size: {{shoesize}}</h5>
+                <h5>Trade for: {{tradefor}}</h5>
+              </div>
+              <div class="col-md-4">
+                <img src="/img/{{shoesname}}.png" alt="Example Shoe Pic" width="252" height="152">
+              </div>
+            </div>
       <a class="btn btn-primary btn-block mb-2" href="/shoes/buy/{{id}}">Buy</a>
       <a class="btn btn-success btn-block mb-2" href="/shoes/trade/{{id}}">Trade</a>
 
