@@ -2,7 +2,7 @@
   <h3>Shoes Information</h3>
   <form action="/shoes" method="post">
     <!standard bootstrp markup>
-    <div class="form-group">
+    <!--<div class="form-group">
       <label for="brandname">Brand Name</label>
       <select class="form-control" name="brandname" required>
         <option disabled selected hidden value="">Select Brand</option>
@@ -18,7 +18,50 @@
     <div class="form-group">
       <label for="shoesname">Shoes Name</label>
       <input type="text" class="form-control" name="shoesname" required>
+    </div>-->
+
+    <div class="form-group">
+      <label for="shoesname">Shoe</label>
+      <select class="form-control" name="shoesname" required>
+        <option disabled selected hidden value="">Select Brand</option>
+        <option disabled value="">adidas</option>
+        <option value="adidas adidas1">adidas1</option>
+        <option value="adidas adidas2">adidas2</option>
+        <option value="adidas adidas3">adidas3</option>
+        <option disabled value="">-----</option>
+        <option disabled value="">Air Jordan</option>
+        <option value="Air Jordan">Air Jordan1</option>
+        <option value="Air Jordan">Air Jordan2</option>
+        <option value="Air Jordan">Air Jordan3</option>
+        <option disabled value="">-----</option>
+        <option disabled value="">Nike</option>
+        <option value="Nike Nike1">Nike1</option>
+        <option value="Nike Nike2">Nike2</option>
+        <option value="Nike Nike3">Nike3</option>
+        <option disabled value="">-----</option>
+        <option disabled value="">Under Armour</option>
+        <option value="Under Armour UA1">UA1</option>
+        <option value="Under Armour UA2">UA2</option>
+        <option value="Under Armour UA3">UA3</option>
+      </select>
     </div>
+
+    <!--
+    <div class="form-group">
+      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Shoes
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li class="dropdown-header">Adidas</li>
+        <button><option value="{'brandname':'Adidas','shoesname':'Adidas1'}">Adidas1</option></button>
+        <button><option value="{'brandname':'Adidas','shoesname':'Adidas2'}">Adidas2</option></button>
+        <li><option value="{'brandname':'Adidas','shoesname':'Adidas3'}">Adidas3</option></li>
+        <li class="divider"></li>
+        <li class="dropdown-header">Nike</li>
+        <li><option value="{'brandname':'Nike','shoesname':'Nike1'}">Nike1</option></li>
+        <li><option value="{'brandname':'Nike','shoesname':'Nike2'}">Nike2</option></li>
+        <li><option value="{'brandname':'Nike','shoesname':'Nike3'}">Nike3</option></li>
+      </ul>
+    </div>-->
 
     <div class="form-group">
       <label for="price">Shoes Price $</label>
