@@ -192,7 +192,7 @@ router.post('/', ensureAuthenticated, (req,res) => {
   if(!req.body.forsale){
    //push on to it with an object with the text of please add a shoes price
    errors.push({text:'Please indicate for sale status.'})
- }
+  }
 
 
 if(errors.length > 0){
@@ -238,20 +238,56 @@ router.put('/:id', ensureAuthenticated, (req,res)=>{
     _id:req.params.id
   })
   .then(shoe => {
-    //new values
-    //shoe.brandname = req.body.brandname;
-    shoe.shoesname = req.body.shoesname;
-    shoe.price = req.body.price;
-    //shoe.description = req.body.description;
-	  shoe.shoesize = req.body.shoesize;
-    //shoe.forsale = req.body.forsale;
 
-    shoe.save()
-    //return a promise
-    .then(shoe => {
-      req.flash('success_msg', 'Shoes information updated');
-      res.redirect('/shoes');
-    })
+    //set a variable called errors to an empty array
+    let errors = [];
+
+    //no shoes name
+    if(!req.body.shoesname){
+      //push on to it with an object with the text of please add a shoes name
+      errors.push({text:'Please add a shoe name.'})
+    }
+
+    //no shoes price
+    if(!req.body.price && !req.body.tradefor){
+      //push on to it with an object with the text of please add a shoes price
+      errors.push({text:'Please add a price or trade.'})
+    }
+
+    if(!req.body.shoesize){
+      //push on to it with an object with the text of please add a shoes price
+      errors.push({text:'Please add a shoesize.'})
+    }
+
+    if(errors.length > 0){
+      res.render('/shoes/edit',{
+        //pass in errors
+      errors:errors,
+      //don't clear what users put previously
+      //brandname:req.body.brandname,
+      //shoesname:req.body.shoesname,
+      //price: req.body.price,
+      //shoesize:req.body.shoesize,
+      //forsale:req.body.forsale,
+      //tradefor:req.body.tradefor
+      });
+    }else{
+      //new values
+      //shoe.brandname = req.body.brandname;
+      shoe.shoesname = req.body.shoesname;
+      shoe.price = req.body.price;
+      //shoe.description = req.body.description;
+  	  shoe.shoesize = req.body.shoesize;
+      //shoe.forsale = req.body.forsale;
+      shoe.tradefor = req.body.tradefor;
+
+      shoe.save()
+      //return a promise
+      .then(shoe => {
+        req.flash('success_msg', 'Shoes information updated');
+        res.redirect('/shoes');
+      })
+    }//end error else
   });
 });
 
