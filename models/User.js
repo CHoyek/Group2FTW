@@ -23,7 +23,7 @@ const UserSchema = new Schema ({
   },
   bal:{
     type: Number,
-    default: 499.99
+    default: 2499.99
   }
 });
 //We are going to create our model and we are going to call it users and it is going to be connected to the user shcema

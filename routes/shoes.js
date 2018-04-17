@@ -146,28 +146,28 @@ router.put('/buy1/:id', ensureAuthenticated, (req,res)=>{
   // });
 });
 
-//Trade shoes Page
-router.get('/trade/:id', ensureAuthenticated, (req,res) => {
-
-  //Find one item, not an array
-  //pass an obejct with a query
-  Shoe.findOne({
-    //get the id passed in
-    _id: req.params.id
-  })
-  .then(shoe =>{
-    if(shoe.user == req.user.id){
-      req.flash('error_msg', 'You may not purchase your own shoe.');
-      res.redirect('/shoes/browse');
-    }else {
-      res.render('shoes/trade',{
-        shoe:shoe
-      });
-    }
-
-  });
-
-});
+// //Trade shoes Page
+// router.get('/trade/:id', ensureAuthenticated, (req,res) => {
+//
+//   //Find one item, not an array
+//   //pass an obejct with a query
+//   Shoe.findOne({
+//     //get the id passed in
+//     _id: req.params.id
+//   })
+//   .then(shoe =>{
+//     if(shoe.user == req.user.id){
+//       req.flash('error_msg', 'You may not purchase your own shoe.');
+//       res.redirect('/shoes/browse');
+//     }else {
+//       res.render('shoes/trade',{
+//         shoe:shoe
+//       });
+//     }
+//
+//   });
+//
+// });
 
 
 //Search shoes Page
