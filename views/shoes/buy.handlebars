@@ -51,11 +51,10 @@
 <form action="/shoes/buy/{{shoe.id}}" method="get">
 
   <div class="card card-body mb-2">
-    <img class="center" src="/img/{{shoe.brandname}}{{shoe.shoesname}}.png" alt="Example Shoe Pic" width="840" height="504">
-    <h4>Brand Name: {{shoe.brandname}}</h4>
-    <h5>Shoe Name: {{shoe.shoesname}}</h5>
-    <h5>Price: ${{shoe.price}}</h5>
-    <h5>Shoe Size: {{shoe.shoesize}}</h5>
+    <img class="center" src="/img/{{shoe.shoesname}}.png" alt="Example Shoe Pic" width="840" height="504">
+    <h4>Shoe Name: {{shoe.shoesname}}</h4>
+    <h4>Price: ${{shoe.price}}</h4>
+    <h4>Shoe Size: {{shoe.shoesize}}</h4>
   </div>
   <a class="nav-link btn btn-primary btn-block mb-2" id="modalToClick" data-toggle="modal" data-target=".bs-example-modal-sm" style="cursor: pointer;">Check Out</a>
 
