@@ -6,13 +6,18 @@
 <!return shoes: it should be an array>
 {{#each shoes}}
   <div class="card card-body mb-2">
-    <h4>Brand Name: {{brandname}}</h4>
-    <h5>Shoes Name: {{shoesname}}</h5>
-
-    <h5>Shoes Price: ${{price}}</h5>
-    <!--<p>Shoes Description: {{description}}</p>-->
-	  <h5>Shoe Size: {{shoesize}}</h5>
-
+    <div class="row">
+      <div class="col-md-8">
+        <h5>Shoes Name: {{shoesname}}</h5>
+        <h5>Shoes Price: ${{price}}</h5>
+        <!--<p>Shoes Description: {{description}}</p>-->
+        <h5>Shoe Size: {{shoesize}}</h5>
+        <h5>Trade for: {{tradefor}}</h5>
+      </div>
+      <div class="col-md-4">
+        <img src="/img/{{shoesname}}.png" alt="Example Shoe Pic" width="252" height="152">
+      </div>
+    </div>
     <!--<a class="btn btn-dark btn-block mb-2" href="/shoes/edit/{{id}}">Edit</a>
     <form method ="post" action="/shoes/{{id}}?_method=DELETE">
       <input type="hidden" name="_method" value="DELETE">
