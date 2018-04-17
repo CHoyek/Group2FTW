@@ -48,7 +48,7 @@
     <p>Confirm your purchase</p>
   </div>
 </body>
-<form action="/shoes/buy/{{shoe.id}}" method="get">
+<!-- <form action="/shoes/buy/{{shoe.id}}" method="get"> -->
 
   <div class="card card-body mb-2">
     <img class="center" src="/img/{{shoe.brandname}}{{shoe.shoesname}}.png" alt="Example Shoe Pic" width="840" height="504">
@@ -69,30 +69,35 @@
         <div class="modal-body">
           <!Modal body for check out starts here>
           <div class="row mx-auto">
-            <form action="post" action="/shoes/buy">
+
+            <!-- <form action="post" action="/shoes/buy">  -->
+
+            <form action="/shoes/buy1/{{shoe.id}}?_method=PUT" method="post">
+              <input type="hidden" name="_method" value="PUT">
+
               <div class="form-group">
                 <label for="name">Name</label>
-                <input type="name" name="name" class="form-control" required>
+                <input type="text" name="name" class="form-control" required>
               </div>
               <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="phone" name="phone" class="form-control" required>
+                <input type="text" name="phone" class="form-control" required>
               </div>
               <div class="form-group">
                 <label for="address">Street</label>
-                <input type="address" name="address" class="form-control" required>
+                <input type="text" name="address" class="form-control" required>
               </div>
               <div class="form-group">
                 <label for="city">City</label>
-                <input type="city" name="city" class="form-control" required>
+                <input type="text" name="city" class="form-control" required>
               </div>
               <div class="form-group">
                 <label for="Zip Code">Zip Code</label>
-                <input type="Zip Code" name="Zip Code" class="form-control" required>
+                <input type="text" name="Zip Code" class="form-control" required>
               </div>
               <div class="form-group">
                 <label for="state">State</label>
-                <input type="state" name="state" class="form-control" required>
+                <input type="text" name="state" class="form-control" required>
               </div>
               <!Submit button>
               <button type="submit" class = "btn btn-info ">Submit</button>
