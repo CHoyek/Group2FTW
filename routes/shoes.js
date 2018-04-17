@@ -260,7 +260,7 @@ router.put('/:id', ensureAuthenticated, (req,res)=>{
     }
 
     if(errors.length > 0){
-      res.render('/shoes/edit',{
+      res.render('shoes/edit',{
         //pass in errors
       errors:errors,
       //don't clear what users put previously
