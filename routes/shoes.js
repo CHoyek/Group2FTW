@@ -104,23 +104,64 @@ router.put('/buy1/:id', ensureAuthenticated, (req,res)=>{
         _id: req.params.id
       })
       .then(shoe => {
-        req.user.bal = (req.user.bal - shoe.price).toFixed(2);
-        shoe.user = req.user._id; //idk if this works yet
 
 
+        if((req.user.bal - shoe.price).toFixed(2) < 0){
+          req.flash('error_msg', 'Insufficient Funds');
+          res.redirect('/shoes/browse');
+
+        } else {
+          req.user.bal = (req.user.bal - shoe.price).toFixed(2);
+          shoe.user = req.user._id; //idk if this works yet
+          shoe.forsale = false;
+        }
 
         // User.find({_id:shoe.user})
         // .then(user =>{
         //   user.bal = (user.bal + shoe.price).toFixed(2);
         // });
 
-
-
-
-        shoe.forsale = false;
         req.user.save().then(user =>{
           req.flash('success_msg', 'Your wallet is now lighter');
           // res.redirect('/');
+
+
+          var nodemailer = require("nodemailer");
+          var emailaddy = req.user.email;
+          // create reusable transport method (opens pool of SMTP connections)
+          var smtpTransport = nodemailer.createTransport({
+              // service: "Gmail",
+              host: "smtp.gmail.com", // hostname
+              secureConnection: true, // use SSL
+              port: 465, // port for secure SMTP
+              auth: {
+                  user: "BartrIOSWE@gmail.com",
+                  pass: "Bartr123"
+              }
+          });
+
+          // setup e-mail data with unicode symbols
+          var mailOptions = {
+              from: "Fred Foo The Yeezy God ✔ <BartrIOSWE@gmail.com>", // sender address
+              to: emailaddy, // list of receivers
+              subject: "Thank you for your order ✔", // Subject line
+              html: "<b>We have received your order and will promptly ship out your new shoes after they have been verified. <br> If you completed a trade, please ship your shoes to ________ for verification. <br> Cheers, <br> Bartr.io Team </b>" // html body
+          }
+
+          // send mail with defined transport object
+          smtpTransport.sendMail(mailOptions, function(error, response){
+              if(error){
+                  console.log(error);
+              }else{
+                  console.log("Message sent: " + response.message);
+              }
+
+              // if you don't want to use this transport object anymore, uncomment following line
+              smtpTransport.close(); // shut down the connection pool, no more messages
+          });
+
+
+
           })
           .catch(err => {
           console.log(err);
