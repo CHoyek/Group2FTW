@@ -96,11 +96,77 @@ router.put('/:id', ensureAuthenticated, (req,res)=>{
 router.get('/addBalance', ensureAuthenticated, (req, res) => {
   User.find({username:req.user.username})
     .then(users => {
+      
       res.render('users/addBalance', {
+          
+          
         users:users
       });
     });
 });
+
+
+
+//Page for users to add balance
+router.get('/addMoney', ensureAuthenticated, (req, res) => {
+  User.find({username:req.user.username})
+    .then(users => {    
+      res.render('users/addMoney', {
+        users:users
+      });
+    });
+});
+
+
+
+//Process Form
+router.post('/', ensureAuthenticated, (req,res) => {
+  //In the request object, we can access the body so req.body
+  //console.log(req.body);
+  //res.send('ok');
+
+  //set a variable called errors to an empty array
+  let errors = [];
+
+  //no brandname
+  /*if(!req.body.brandname){
+    //push on to it with an object with the text of please add a brand name
+    errors.push({text:'Please add a brand name.'})
+  }*/
+
+  //no shoes name
+  if(!req.body.money){
+    //push on to it with an object with the text of please add a shoes name
+    errors.push({text:'Please add money.'})
+  }
+
+if(errors.length > 0){
+  //rerender the form
+  res.render('users/addMoney',{
+    //pass in errors
+  errors:errors,
+  //don't clear what users put previously
+  balance:req.body.balance
+  });
+}else {
+  req.users.bal = (req.users.bal + req.users.money);
+  req.user
+  .save()
+  //return a promise
+  //redirect to /shoes page
+  .then(shoes => {
+    req.flash('success_msg', 'Shoes information added');
+    res.redirect('/addBalance');
+  })
+}
+
+});
+
+
+
+
+
+
 
 // //navbar router (needed for balance)
 // router.get('/settings', ensureAuthenticated, (req, res) => {

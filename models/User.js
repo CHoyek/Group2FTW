@@ -24,7 +24,13 @@ const UserSchema = new Schema ({
   bal:{
     type: Number,
     default: 2499.99
-  }
+  },
+    
+    money:{
+    
+    type: Number,
+    default: 0
+    }
 });
 //We are going to create our model and we are going to call it users and it is going to be connected to the user shcema
 mongoose.model('users', UserSchema);
