@@ -37,6 +37,11 @@ const ShoeSchema = new Schema ({
     type: Boolean,
     default: true
   },
+    
+    email: {
+    type: String
+    
+},
   tradefor:{
     type:String,
     required: false
