@@ -25,6 +25,73 @@ router.get('/settings', ensureAuthenticated, (req, res) => {
     });
 });
 
+
+
+//Edit email Form
+router.get('/edit/:id', ensureAuthenticated, (req,res)=>{
+  //Find one item, not an array
+  //pass an obejct with a query
+  User.findOne({
+    //get the id passed in
+    _id: req.params.id
+  })
+  .then(user =>{
+    
+      res.render('users/edit',{
+        user:user
+      });
+
+  });
+});
+
+//Edit email process
+router.put('/:id', ensureAuthenticated, (req,res)=>{
+  User.findOne({
+    _id:req.params.id
+  })
+  .then(user => {
+      //console.log (user.email);
+    //set a variable called errors to an empty array
+    let errors = [];
+    
+    if(!req.body.email){
+      //push on to it with an object with the text of please add an email 
+      errors.push({text:'Please add an email.'})
+    }    
+      
+    if(errors.length > 0 ){
+      res.render('users/edit',{
+        //pass in errors
+      errors:errors,
+      })
+    }else{      
+          //Check duplicate emails
+          User.findOne({email: req.body.email})
+          .then(user => {
+            if(user && user.id != req.user.id){
+              req.flash('error_msg', 'Email already taken. Failed to update your information');
+              res.redirect('/users/settings/');
+            }  else { 
+                 User.findOne({
+                 //get the id passed in
+                _id: req.params.id
+                 })   
+      
+      //return a promise
+      .then(user => {
+        user.email= req.body.email;
+        user.save()
+        req.flash('success_msg', 'User information updated');
+        res.redirect('/users/settings');
+                })
+            }//end of else after checking duplicate emails
+        }); //end of check duplicate emails
+    }//end error else
+  });
+});
+
+
+
 //Page for users to add balance
 router.get('/addBalance', ensureAuthenticated, (req, res) => {
   User.find({username:req.user.username})

@@ -9,8 +9,10 @@
   <div class="card card-body">
     <h4>Username: {{username}}</h4>
     <h5>Email: {{email}}</h5>
-    <h5>Balance: ${{bal}}</h5>
+    <h5>Balance: ${{bal}}</h5>    
+    <a class="btn btn-primary:visited btn-block mb-2" id="editbutton" href="/users/edit/{{id}}"> <h3> <b> Edit Email Address </b> </h3></a>
   </div>
+
 {{else}}
   <p>poo</p>
 {{/each}}
