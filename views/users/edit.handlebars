@@ -1,0 +1,22 @@
+<!--<!loop through the errors>
+{{#each errors}}
+  <div class="alert alert-danger">{{text}}</div>
+  <!no errors, nothing happened>
+{{else}}
+
+{{/each}}-->
+
+
+<div class="card card-body">
+  <h3>Edit User Information</h3>
+  <form action="/users/{{user.id}}?_method=PUT" method="post"><!---->
+    <input type="hidden" name="_method" value="PUT">
+       <div class="form-group">
+
+      <label for="email">Email</label>
+      <input type="text" class="form-control" name="email" value="{{user.email}}">
+
+    </div>
+         <button type="submit" class = "btn btn-info ">Submit</button>
+  </form>
+</div>
